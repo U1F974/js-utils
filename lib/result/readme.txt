@@ -1,0 +1,1 @@
+source https://github.com/patrickmichalina/typescript-monads/tree/master/src/result

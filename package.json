@@ -1,0 +1,21 @@
+{
+  "name": "@pawka/js-utils",
+  "version": "3.0.0",
+  "description": "Разные утилиты которые мне нужны в той или иной степени",
+  "keywords": [
+    "js",
+    "utils"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/U1F974/js-utils"
+  },
+  "license": "ISC",
+  "author": "pawka <pawka_kekw@tuta.io>",
+  "type": "commonjs",
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
+  "engines": {
+    "node": ">=20"
+  }
+}
