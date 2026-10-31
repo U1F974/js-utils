@@ -78,6 +78,30 @@ describe("structures/queue.js", function () {
   it("clear", function () {
     assert.equal(new Queue([1, 2]).clear().size, 0);
   });
+
+  it("keeps FIFO order across wraparound and growth", function () {
+    const queue = new Queue();
+    const model = [];
+    for (let i = 0; i < 1000; i++) {
+      queue.enqueue(i);
+      model.push(i);
+      if (i % 3 === 0) assert.equal(queue.dequeue(), model.shift());
+    }
+
+    assert.equal(queue.size, model.length);
+    assert.equal(queue.peek(), model[0]);
+    assert.deepEqual(queue.toArray(), model);
+    assert.deepEqual([...queue], model);
+  });
+
+  it("is reusable after clear", function () {
+    const queue = new Queue();
+    for (let i = 0; i < 100; i++) queue.enqueue(i);
+    queue.clear().enqueue(1).enqueue(2);
+
+    assert.deepEqual(queue.toArray(), [1, 2]);
+    assert.equal(queue.peek(), 1);
+  });
 });
 
 describe("structures/stack.js", function () {
@@ -130,6 +154,35 @@ describe("structures/deque.js", function () {
     const deque = new Deque();
     assert.equal(deque.popFront(), undefined);
     assert.equal(deque.popBack(), undefined);
+  });
+
+  it("matches an array across wraparound and growth", function () {
+    const deque = new Deque();
+    const model = [];
+    for (let i = 0; i < 1000; i++) {
+      if (i % 2 === 0) {
+        deque.pushFront(i);
+        model.unshift(i);
+      } else {
+        deque.pushBack(i);
+        model.push(i);
+      }
+      if (i % 5 === 0) assert.equal(deque.popBack(), model.pop());
+      if (i % 7 === 0) assert.equal(deque.popFront(), model.shift());
+    }
+
+    assert.equal(deque.size, model.length);
+    assert.equal(deque.peekFront(), model[0]);
+    assert.equal(deque.peekBack(), model.at(-1));
+    assert.deepEqual(deque.toArray(), model);
+    assert.deepEqual([...deque], model);
+  });
+
+  it("peek on empty deque", function () {
+    const deque = new Deque([1]);
+    deque.popBack();
+    assert.equal(deque.peekFront(), undefined);
+    assert.equal(deque.peekBack(), undefined);
   });
 });
 

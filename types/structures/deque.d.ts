@@ -1,8 +1,10 @@
 /**
  * @description
  * Двусторонняя очередь: добавление и извлечение с обоих концов за O(1).
+ * Построена на растущем кольцевом буфере. Память после пика не освобождается
+ * до `clear()`.
  *
- * @source https://github.com/metarhia/metautil/blob/master/lib/list.js
+ * @source https://github.com/metarhia/metautil/blob/master/lib/deque.js
  *
  * @example
  *

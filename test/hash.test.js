@@ -1,7 +1,7 @@
 const { describe, it } = require("node:test");
 const assert = require("node:assert");
 
-const { md5, sha256 } = require("../lib/hash.js");
+const { md5, sha1, sha256 } = require("../lib/hash.js");
 
 describe("hash.js", function () {
   it("md5, string", function () {
@@ -14,6 +14,22 @@ describe("hash.js", function () {
 
   it("md5, base64", function () {
     assert.equal(md5("hello", "base64"), "XUFAKrxLKna5cZ2REBfFkg==");
+  });
+
+  it("sha1, string", function () {
+    assert.equal(sha1("hello"), "aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d");
+  });
+
+  it("sha1, buffer equals string", function () {
+    assert.equal(sha1(Buffer.from("hello")), sha1("hello"));
+  });
+
+  it("sha1, base64", function () {
+    assert.equal(sha1("hello", "base64"), "qvTGHdzF6KLavt4PO0gs2a6pQ00=");
+  });
+
+  it("sha1, empty string", function () {
+    assert.equal(sha1(""), "da39a3ee5e6b4b0d3255bfef95601890afd80709");
   });
 
   it("sha256, string", function () {

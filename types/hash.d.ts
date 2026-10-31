@@ -22,6 +22,28 @@ export declare function md5(
 
 /**
  * @description
+ * Считает SHA-1-хеш строки или буфера.
+ * Не криптостойкий - годится для контрольных сумм и ключей кеша, но не для паролей и подписей.
+ *
+ * @param {string | NodeJS.ArrayBufferView} data
+ * @param {'hex' | 'base64' | 'base64url' | 'binary'} [encoding='hex'] Кодировка результата
+ * @returns {string}
+ *
+ * @example
+ *
+ * sha1("hello")
+ * // "aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d"
+ *
+ * sha1("hello", "base64")
+ * // "qvTGHdzF6KLavt4PO0gs2a6pQ00="
+ */
+export declare function sha1(
+  data: string | NodeJS.ArrayBufferView,
+  encoding?: "hex" | "base64" | "base64url" | "binary"
+): string;
+
+/**
+ * @description
  * Считает SHA-256-хеш строки или буфера.
  *
  * @param {string | NodeJS.ArrayBufferView} data

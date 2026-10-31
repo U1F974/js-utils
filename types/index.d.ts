@@ -2,6 +2,7 @@ export * from "./array";
 export * from "./async";
 export * from "./bigint";
 export * from "./uid";
+export * from "./prefixed-id";
 export * from "./factory";
 export * from "./json";
 export * from "./late";

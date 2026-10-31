@@ -1,9 +1,10 @@
 /**
  * @description
- * Очередь (FIFO). Построена на связном списке, поэтому `dequeue` работает за O(1),
- * в отличие от `Array.prototype.shift`.
+ * Очередь (FIFO). Построена на растущем кольцевом буфере, поэтому `dequeue`
+ * работает за O(1), в отличие от `Array.prototype.shift`.
+ * Память после пика не освобождается до `clear()`.
  *
- * @source https://github.com/metarhia/metautil/blob/master/lib/list.js
+ * @source https://github.com/metarhia/metautil/blob/master/lib/queue.js
  *
  * @example
  *
