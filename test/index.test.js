@@ -12,7 +12,6 @@ const EXPORTS = [
   "randomBigInt",
   "uid",
   "genPrefixedId",
-  "prefixedId",
   "factory",
   "late",
   "inspectFmt",
