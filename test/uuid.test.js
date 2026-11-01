@@ -60,4 +60,27 @@ describe("uuid.js", function () {
     for (let i = 0; i < 1000; i++) values.add(uuid.v7());
     assert.equal(values.size, 1000);
   });
+
+  it("v7, the symbol after the version takes all 16 values", function () {
+    const symbols = new Set();
+    for (let i = 0; i < 2000; i++) symbols.add(uuid.v7("hex")[13]);
+
+    assert.equal(symbols.size, 16);
+  });
+
+  it("v7, both formats stay valid across pool refills", function () {
+    const values = new Set();
+    for (let i = 0; i < 3000; i++) {
+      const value = i % 2 === 0 ? uuid.v7() : uuid.v7("hex");
+      const dashed =
+        value.length === 32
+          ? value.replace(/^(.{8})(.{4})(.{4})(.{4})/, "$1-$2-$3-$4-")
+          : value;
+
+      assert.match(dashed, V7);
+      values.add(dashed);
+    }
+
+    assert.equal(values.size, 3000);
+  });
 });

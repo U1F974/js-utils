@@ -1,7 +1,11 @@
 export declare const uuid: {
   /**
    * @description
-   * Генерация UUID v7 с поддержкой формата вывода.
+   * Генерация UUID v7 - UUID, сортируемый по времени.
+   * Сортируется по миллисекунде создания, внутри одной миллисекунды
+   * порядок случайный. 74 случайных бита.
+   *
+   * @see https://www.rfc-editor.org/rfc/rfc9562#name-uuid-version-7
    *
    * @param {'hex' | 'uuid'} [fmt='uuid'] Формат вывода: `'uuid'` (по умолчанию) или `'hex'`
    * @returns {string}
