@@ -31,19 +31,24 @@
  *
  * @example
  *
- * prefixedId("usr")
+ * genPrefixedId("usr")
  * // "usr_11xN1gkBbC9wzTPJzppRHWC3v6i"
  *
- * prefixedId("tok", { owner: "usr_11xN1gkBbC9wzTPJzppRHWC3v6i" })
+ * genPrefixedId("tok", { owner: "usr_11xN1gkBbC9wzTPJzppRHWC3v6i" })
  * // "tok_11xN1gkBbC9wzTPJzqVnSMKg4kC"
  *
- * prefixedId("usr", { time: new Date(0) })
+ * genPrefixedId("usr", { time: new Date(0) })
  * // "usr_1000000oyCMqleOc5RZWHlbOnRl"
  *
- * prefixedId("chk", { mode: "test" })
+ * genPrefixedId("chk", { mode: "test" })
  * // "chk_test_11xN33Na1b046dW6fsjQsgCpF2t"
  */
-export declare function prefixedId(
+export declare function genPrefixedId(
   prefix: string,
   options?: { owner?: string; time?: Date; mode?: string }
 ): string;
+
+/**
+ * @deprecated Старое имя `genPrefixedId`, будет удалено в 4.0.0.
+ */
+export declare const prefixedId: typeof genPrefixedId;
