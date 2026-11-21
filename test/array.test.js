@@ -7,6 +7,7 @@ const {
   compact,
   sum,
   firstValue,
+  lastValue,
 } = require("../lib/array.js");
 
 describe("array.js", function () {
@@ -115,5 +116,39 @@ describe("array.js", function () {
 
   it("firstValue, a nested array is returned whole", function () {
     assert.deepStrictEqual(firstValue([["a"], ["b"]]), ["a"]);
+  });
+
+  it("lastValue, takes the last element of an array", function () {
+    assert.equal(lastValue(["a", "b"]), "b");
+  });
+
+  it("lastValue, a single value is returned as is", function () {
+    assert.equal(lastValue("a"), "a");
+    assert.equal(lastValue(0), 0);
+    assert.equal(lastValue(false), false);
+  });
+
+  it("lastValue, empty array", function () {
+    assert.equal(lastValue([]), undefined);
+  });
+
+  it("lastValue, value 'undefined'", function () {
+    assert.equal(lastValue(undefined), undefined);
+    assert.equal(lastValue(), undefined);
+  });
+
+  it("lastValue, value 'null'", function () {
+    assert.equal(lastValue(null), null);
+  });
+
+  it("lastValue, works with any type", function () {
+    const object = { a: 1 };
+
+    assert.equal(lastValue([{ b: 2 }, object]), object);
+    assert.equal(lastValue([1, 2]), 2);
+  });
+
+  it("lastValue, a nested array is returned whole", function () {
+    assert.deepStrictEqual(lastValue([["a"], ["b"]]), ["b"]);
   });
 });

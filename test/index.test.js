@@ -9,6 +9,7 @@ const EXPORTS = [
   "sum",
   "uniq",
   "firstValue",
+  "lastValue",
   "randomBigInt",
   "uid",
   "genPrefixedId",

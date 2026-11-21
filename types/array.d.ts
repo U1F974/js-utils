@@ -94,3 +94,27 @@ export declare function sum(array: number[]): number;
  * // undefined
  */
 export declare function firstValue<T>(value?: T | T[]): T | undefined;
+
+/**
+ * @description
+ * Отдает одно значение там, где может прийти как значение, так и массив
+ * значений: из массива берется последний элемент, одиночное значение
+ * возвращается как есть. Пригодно для заголовков и query-параметров, которые
+ * в запросе могут повторяться и где побеждает последнее вхождение.
+ *
+ * @template T
+ * @param {T | T[]} [value]
+ * @returns {T | undefined}
+ *
+ * @example
+ *
+ * lastValue(["a", "b"])
+ * // "b"
+ *
+ * lastValue("a")
+ * // "a"
+ *
+ * lastValue([])
+ * // undefined
+ */
+export declare function lastValue<T>(value?: T | T[]): T | undefined;
